@@ -17,17 +17,17 @@ export const Lists = ({ movieList, searched }) => {
             value.movies.movie.toLowerCase().includes(searched.toLowerCase())
           )
           .map((data) => (
-            <List sx={{ background: "#bebebe" }} key={data.id}>
-              <ListItem disablePadding>
-                <ListItemButton>
+            <List   sx={{ width: '75%' }} key={data.id} >
+              <ListItem  disablePadding>
+                <ListItemButton sx={{ background: "#87ceeb" }}>
                   <ListItemIcon>
                     <Movie />
                   </ListItemIcon>
-                  <ListItemText primary={data.movies.movie} />
+                  <ListItemText  primary={data.movies.movie} />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton sx={{ background: "#1e90ff" }}>
                   <ListItemIcon>
                     <TrendingUp />
                   </ListItemIcon>
@@ -35,7 +35,7 @@ export const Lists = ({ movieList, searched }) => {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton sx={{ background: "#73c2fb" }}>
                   <ListItemIcon>
                     <AvTimer />
                   </ListItemIcon>
@@ -43,7 +43,7 @@ export const Lists = ({ movieList, searched }) => {
                 </ListItemButton>
               </ListItem>
               <Divider />
-              <Divider />
+              <br/>
             </List>
           ))}
     </>

@@ -28,7 +28,7 @@ function App() {
     <div>
       <Header />
 
-      <Grid container spacing={2} sx={{ mx: 1 }}>
+      <Grid container spacing={16} sx={{ mx: 1 }}>
         <MovieForm movies={movies} />
         <Grid item lg={6}>
           <Search searches={search} />

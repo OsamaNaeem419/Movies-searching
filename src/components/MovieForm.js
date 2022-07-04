@@ -8,21 +8,26 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 export const MovieForm = ({ movies }) => {
-  const [movie, setMovie] = useState();
-  const [rating, setRating] = useState();
-  const [duration, setDuration] = useState();
+  const [movie, setMovie] = useState("");
+  const [rating, setRating] = useState("");
+  const [duration, setDuration] = useState("");
   const [falseDuration, setFalseDuration] = useState(false);
+  const handleReset = () => {
+    setMovie("");
+    setRating("");
+    setDuration("");
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     let min = duration.toLowerCase().includes("min");
     let hr = duration.toLowerCase().includes("hr");
     console.log(min, hr);
-    
+
     if (min || hr) {
       setFalseDuration(false);
-
       movies({ movie, rating, duration });
+      handleReset();
     } else {
       setFalseDuration(true);
     }
@@ -36,6 +41,8 @@ export const MovieForm = ({ movies }) => {
             <Grid container spacing={1}>
               <Grid item lg={12} xs={12}>
                 <TextField
+                onFocus
+                value = {movie}
                   required
                   fullWidth
                   id="outlined-basic"
@@ -46,6 +53,7 @@ export const MovieForm = ({ movies }) => {
               </Grid>
               <Grid item lg={12} xs={12}>
                 <TextField
+                value = {rating}
                   fullWidth
                   required
                   type="number"
@@ -58,6 +66,7 @@ export const MovieForm = ({ movies }) => {
 
               <Grid item lg={12} xs={12}>
                 <TextField
+                value = {duration}
                   fullWidth
                   required
                   type="text"
@@ -79,6 +88,7 @@ export const MovieForm = ({ movies }) => {
                   Add Movie
                 </Button>
               </Grid>
+              
             </Grid>
           </CardContent>
         </form>
