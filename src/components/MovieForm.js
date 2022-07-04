@@ -11,18 +11,23 @@ export const MovieForm = ({ movies }) => {
   const [movie, setMovie] = useState();
   const [rating, setRating] = useState();
   const [duration, setDuration] = useState();
-  const [falseRating, setFalseRating] = useState(true);
+  const [falseDuration, setFalseDuration] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (rating > 99) {
-      setFalseRating(false)
-      return;
+    let min = duration.toLowerCase().includes("min");
+    let hr = duration.toLowerCase().includes("hr");
+    console.log(min, hr);
+    
+    if (min || hr) {
+      setFalseDuration(false);
+
+      movies({ movie, rating, duration });
+    } else {
+      setFalseDuration(true);
     }
-    movies({ movie, rating, duration });
   };
 
-  
   return (
     <Grid item lg={6} xs={12}>
       <Card>
@@ -50,13 +55,7 @@ export const MovieForm = ({ movies }) => {
                   onChange={(e) => setRating(e.target.value)}
                 />
               </Grid>
-              <Grid item lg={12} xs={12}>
-                { !falseRating &&
-                  <Typography variant="string" color="error">
-                    *Rating connot be greater than 99!
-                  </Typography>
-                }
-              </Grid>
+
               <Grid item lg={12} xs={12}>
                 <TextField
                   fullWidth
@@ -67,6 +66,13 @@ export const MovieForm = ({ movies }) => {
                   variant="outlined"
                   onChange={(e) => setDuration(e.target.value)}
                 />
+              </Grid>
+              <Grid item lg={12} xs={12}>
+                {falseDuration && (
+                  <Typography variant="string" color="error">
+                    *Duration must be in Min or hours!
+                  </Typography>
+                )}
               </Grid>
               <Grid item lg={12} xs={12} sx={{ textAlign: "center" }}>
                 <Button type="submit" variant="contained">

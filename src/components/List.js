@@ -9,7 +9,6 @@ import {
 import { Movie, AvTimer, TrendingUp } from "@mui/icons-material";
 
 export const Lists = ({ movieList, searched }) => {
-  console.log(searched);
   return (
     <>
       {movieList &&
