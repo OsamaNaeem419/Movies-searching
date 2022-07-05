@@ -16,10 +16,10 @@ function App() {
     setMoviesList([newMovie, ...moviesList]);
     setMovieList([newMovie, ...movieList]);
   };
-
   const search = (search) => {
     setSearchValue(search);
-    let re = new RegExp(`.*${search}`, "i", "^");
+    let re = new RegExp(`.*${search}.*`, "i");
+
 
     const filter = movieList.filter((value) => re.test(value.movies.movie));
     setMoviesList(filter);

@@ -22,7 +22,6 @@ export const MovieForm = ({ movies }) => {
     e.preventDefault();
     let min = duration.toLowerCase().includes("min");
     let hr = duration.toLowerCase().includes("hr");
-    console.log(min, hr);
 
     if (min || hr) {
       setFalseDuration(false);
@@ -41,7 +40,6 @@ export const MovieForm = ({ movies }) => {
             <Grid container spacing={1}>
               <Grid item lg={12} xs={12}>
                 <TextField
-                onFocus
                 value = {movie}
                   required
                   fullWidth
